@@ -22,7 +22,7 @@ async function queryChatGPT(promptText) {
   }
 
   const data = await response.json();
-  return data.choices[0].message;
+  return data.choices[0].message.content;
 }
 
 module.exports = {queryChatGPT};

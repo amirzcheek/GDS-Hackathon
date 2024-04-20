@@ -308,7 +308,8 @@
         }
 
         .chat-body {
-            height: 100%;
+            top: 0px;
+            height: 80%;
             overflow-y: auto;
             padding: 10px;
         }
@@ -1492,13 +1493,16 @@
    <div class="container" style="height: 800px;">
     <button class="chat-button" onclick="toggleChat()">Chat with AI</button>
     
-    <div class="chat-container" id="chat-container">
+    <div class="chat-container" id="chat-container" <% if (opened) { %> style="display: block;" <% } %>>
         <div class="chat-header">
             Chat with AI
             <button class="close-button" onclick="toggleChat()">X</button>
         </div>
         <div class="chat-body" id="chat-body">
-            <!-- Chat messages will be displayed here -->
+            <% history.forEach(function(interaction) { %>
+                <p><%= interaction[0] %></p>
+                <p><%= interaction[1] %></p>
+            <% }); %>
         </div>
         <form action="/" method="post">
             <input type="text" name="message" class="input-box" placeholder="Type your message here...">
