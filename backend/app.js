@@ -8,6 +8,11 @@ const db = require("./database/connection.js");
 
 db.connect();
 
+app.set("view engine", "ejs");
+app.set("views", "frontend/views");
+
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/", homeRoute);
 
 app.listen(config.server.port, () => {
