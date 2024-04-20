@@ -6,7 +6,7 @@ const router = express.Router();
 let history = [];
 
 router.get("/", async (req, res) => {
-  let attractionsData = await attractions.getDocs();
+  // let attractionsData = await attractions.getDocs();
   res.render("index", {history: history, opened: false});
 })
 
