@@ -9,7 +9,6 @@ let position = { latitude: 51.134934, longitude: 71.392986 };
 router.get("/", async (req, res) => {
   let attractionsData = await attractions.getDocs();
   res.render("index", { history: history, opened: false, attractionsData: attractionsData});
-  console.log(attractionsData);
 });
 
 router.post("/", async (req, res) => {
