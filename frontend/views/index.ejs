@@ -1594,26 +1594,13 @@
             Выберите точку
         <button class="close-button" onclick="toggleChatNav()">X</button>
         </div>
-        <form id="popup-form" action="/navigation" method="post">
-            <input type="hidden" name="latitude" value="51.129043">
-            <input type="hidden" name="longitude" value="71.431334">
-            <button type="submit" name="button1" class="popup-button">Байтерек</button>
-        </form>
-        <form id="popup-form" action="/navigation" method="post">
-            <input type="hidden" name="latitude" value="51.148035">
-            <input type="hidden" name="longitude" value="71.416064">
-            <button type="submit" name="button2" class="popup-button">Океанариум «Ailand»</button>
-        </form>
-        <form id="popup-form" action="/navigation" method="post">
-            <input type="hidden" name="latitude" value="51.089312">
-            <input type="hidden" name="longitude" value="71.41592">
-            <button type="submit" name="button3" class="popup-button">Музей «Нур-Алем»</button>
-        </form>
-        <form id="popup-form" action="/navigation" method="post">
-            <input type="hidden" name="latitude" value="51.134915">
-            <input type="hidden" name="longitude" value="71.41043">
-            <button type="submit" name="button4" class="popup-button">Театр «Астана Опера»</button>
-        </form>
+        <% attractionsData.forEach(function(attr) { %>
+            <form id="popup-form" action="/navigation" method="post">
+                <input type="hidden" name="latitude" value=<%= attr.lat %>>
+                <input type="hidden" name="longitude" value=<%= attr.lon %>>
+                <button type="submit" name="button2" class="popup-button"><%= attr.name %></button>
+            </form>
+        <% }); %>
         
     </div>
 
