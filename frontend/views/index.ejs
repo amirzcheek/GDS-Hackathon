@@ -415,27 +415,34 @@
             justify-content: center;
         }
 
-
-        .popup-button {
-            background-color: white;
-            color: rgba(0, 178, 255, 255);
-            border: 2px solid rgba(0, 178, 255, 255);
-            padding: 10px 10px;
-            border-radius: 10px;
-            margin-top: 5px;
-            cursor: pointer;
-            width: 80%;
-            box-sizing: border-box;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-            font: bold;
-        }
-
-        .popup-button:hover {
-            background-color: rgba(0, 178, 255, 255);
-            color: white;
-            border-color: rgba(0, 178, 255, 255);
+        .popup-button { 
+        background-color: #00b2ff; 
+        color: #ffffff; 
+        border: none; 
+        padding: 15px 30px; 
+        border-radius: 10px; 
+        margin-top: 10px; 
+        cursor: pointer; 
+        width: 80%; 
+        box-sizing: border-box; 
+        transition: background-color 0.3s, color 0.3s; 
+        font-size: 16px; 
+        font-weight: bold; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        } 
+ 
+        .popup-button:hover { 
+        background-color: #008cbb; 
+        } 
+ 
+        .popup-button:active { 
+        background-color: #006d9c; 
+        } 
+ 
+        .popup-button i { 
+        margin-right: 10px; 
         }
 
       </style><link rel="stylesheet" type="text/css" href="https://static.ticketon.kz/widget/consumer.css"><style class="darkreader darkreader--override" media="screen"></style></head>
@@ -1588,10 +1595,24 @@
         <button class="close-button" onclick="toggleChatNav()">X</button>
         </div>
         <form id="popup-form" action="/navigation" method="post">
-            <button type="submit" name="button1" class="popup-button">Button 1</button>
-            <button type="submit" name="button2" class="popup-button">Button 2</button>
-            <button type="submit" name="button3" class="popup-button">Button 3</button>
-            <button type="submit" name="button4" class="popup-button">Button 4</button>
+            <input type="hidden" name="latitude" value="51.129043">
+            <input type="hidden" name="longitude" value="71.431334">
+            <button type="submit" name="button1" class="popup-button">Байтерек</button>
+        </form>
+        <form id="popup-form" action="/navigation" method="post">
+            <input type="hidden" name="latitude" value="51.148035">
+            <input type="hidden" name="longitude" value="71.416064">
+            <button type="submit" name="button2" class="popup-button">Океанариум «Ailand»</button>
+        </form>
+        <form id="popup-form" action="/navigation" method="post">
+            <input type="hidden" name="latitude" value="51.089312">
+            <input type="hidden" name="longitude" value="71.41592">
+            <button type="submit" name="button3" class="popup-button">Музей «Нур-Алем»</button>
+        </form>
+        <form id="popup-form" action="/navigation" method="post">
+            <input type="hidden" name="latitude" value="51.134915">
+            <input type="hidden" name="longitude" value="71.41043">
+            <button type="submit" name="button4" class="popup-button">Театр «Астана Опера»</button>
         </form>
         
     </div>

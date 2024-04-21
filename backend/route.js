@@ -4,6 +4,7 @@ const chatGPT = require("./chatGPT.js");
 const router = express.Router();
 
 let history = [];
+let position = { latitude: 51.134934, longitude: 71.392986 };
 
 router.get("/", async (req, res) => {
   // let attractionsData = await attractions.getDocs();
@@ -17,12 +18,16 @@ router.post("/", async (req, res) => {
   res.json({ message: message, response: response });
 });
 
-router.post('/location', (req, res) => {
-  console.log(req.body); // { latitude: ..., longitude: ... }
+router.post("/location", (req, res) => {
+  position = req.body;
 });
 
-router.get('/location', (req, res) => {
-  window.open('https://2gis.kz/astana/directions/points/71.426677%2C51.096833%3B9570771978420226%7C71.426677%2C52.096833%3B70030076160602854?m=71.278451%2C51.251306%2F10', '_blank');
+router.post("/navigation", (req, res) => {
+  const longitude = req.body.longitude;
+  const latitude = req.body.latitude;
+  res.redirect(
+    `https://2gis.kz/astana/directions/points/${position.longitude}%2C${position.latitude}%3B9570771978420226%7C${longitude}%2C${latitude}%3B70030076160602854?m=71.278451%2C51.251306%2F10`
+  );
 });
 
 module.exports = router;
