@@ -19,7 +19,10 @@ router.post("/", async (req, res) => {
 
 router.post('/location', (req, res) => {
   console.log(req.body); // { latitude: ..., longitude: ... }
-  res.json({ status: 'Location data received successfully' });
+});
+
+router.get('/location', (req, res) => {
+  window.open('https://2gis.kz/astana/directions/points/71.426677%2C51.096833%3B9570771978420226%7C71.426677%2C52.096833%3B70030076160602854?m=71.278451%2C51.251306%2F10', '_blank');
 });
 
 module.exports = router;

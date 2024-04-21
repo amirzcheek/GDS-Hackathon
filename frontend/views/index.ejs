@@ -258,7 +258,7 @@
       display: flex;
           align-items: center;
       }
-      <!---->
+      /* CHATBOT */
       .chat-button {
             position: fixed;
             bottom: 20px;
@@ -281,6 +281,20 @@
             border: 2px solid #ccc;
             background-color: white;
             z-index: 9998; /* Ensure chat is on top */
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .navigation-container {
+            display: none;
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            width: 450px;
+            height: 100%;
+            border: 2px solid #ccc;
+            background-color: white;
+            z-index: 99999; /* Ensure chat is on top */
             font-family: Arial, sans-serif;
             padding: 10px;
             box-sizing: border-box;
@@ -317,6 +331,21 @@
 
         .chat-body span {
             color: #00B2FF;
+        }
+
+        #navigation {
+            position: relative;
+            bottom: -44px;
+            left: 176px;
+            background-color: rgba(0, 178, 255, 255);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        #navigation:hover {
+            background-color: #2183ec;
         }
 
         .user-message {
@@ -1499,7 +1528,7 @@
    <div class="container" style="height: 800px;">
     <button class="chat-button" onclick="toggleChat()">Чат с ботом</button>
     
-    <div class="chat-container" id="chat-container" <% if (opened) { %> style="display: block;" <% } %>>
+    <div class="chat-container" id="chat-container">
         <div class="chat-header">
             SmartGuide
             <button class="close-button" onclick="toggleChat()">X</button>
@@ -1514,9 +1543,23 @@
             <input type="text" name="message" class="input-box" placeholder="Напишите своё сообщение...">
             <input type="submit" value="Отправить" class="submit-button">
         </form>
+        <button id="navigation" onclick="toggleChatNav()">Построить путь</button>
     </div>
-    
-    
+
+    <div class="navigation-container" id="navigation-container">
+        <div class="chat-header">
+            SmartGuide2
+            <button class="close-button" onclick="toggleChatNav()">X</button>
+        </div>
+        <!-- <div class="chat-body" id="chat-body">
+            <% history.forEach(function(interaction) { %>
+                <p><span>Вы:</span> <%= interaction[0] %></p>
+                <p><span>SmartGuide:</span> <%= interaction[1] %></p>
+            <% }); %>
+        </div> -->
+        <button id="navigation">Построить путь</button>
+    </div>
+
    </div>
     <div class="sectipon sectipon-partners">
         <div class="container">
@@ -2064,6 +2107,15 @@ $(document).ready(function() {
 <script>
     function toggleChat() {
         var chatContainer = document.getElementById('chat-container');
+        if (chatContainer.style.display === 'none') {
+            chatContainer.style.display = 'block';
+        } else {
+            chatContainer.style.display = 'none';
+        }
+    }
+
+    function toggleChatNav() {
+        var chatContainer = document.getElementById('navigation-container');
         if (chatContainer.style.display === 'none') {
             chatContainer.style.display = 'block';
         } else {
