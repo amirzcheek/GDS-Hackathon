@@ -315,6 +315,10 @@
             padding-bottom: 135px;
         }
 
+        .chat-body span {
+            color: #00B2FF;
+        }
+
         .user-message {
             background-color: #f1f1f1;
             border-radius: 5px;
@@ -1493,22 +1497,22 @@
     </div>
 <!--CHATBOT-->
    <div class="container" style="height: 800px;">
-    <button class="chat-button" onclick="toggleChat()">Chat with AI</button>
+    <button class="chat-button" onclick="toggleChat()">Чат с ботом</button>
     
     <div class="chat-container" id="chat-container" <% if (opened) { %> style="display: block;" <% } %>>
         <div class="chat-header">
-            Chat with AI
+            SmartGuide
             <button class="close-button" onclick="toggleChat()">X</button>
         </div>
         <div class="chat-body" id="chat-body">
             <% history.forEach(function(interaction) { %>
-                <p><%= interaction[0] %></p>
-                <p><%= interaction[1] %></p>
+                <p><span>Вы:</span> <%= interaction[0] %></p>
+                <p><span>SmartGuide:</span> <%= interaction[1] %></p>
             <% }); %>
         </div>
-        <form action="/" method="post">
-            <input type="text" name="message" class="input-box" placeholder="Type your message here...">
-            <input type="submit" value="Submit" class="submit-button">
+        <form id="chat-form" action="/" method="post">
+            <input type="text" name="message" class="input-box" placeholder="Напишите своё сообщение...">
+            <input type="submit" value="Отправить" class="submit-button">
         </form>
     </div>
     
@@ -2007,6 +2011,29 @@ var objectL10n = {"destinationErrorMsg":"\u041f\u043e\u0436\u0430\u043b\u0443\u0
 
     });
 </script>
+
+<script>
+$(document).ready(function() {
+    $('#chat-form').submit(function(event) {
+        event.preventDefault();
+        const message = $('input[name="message"]').val();
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: { message: message },
+            success: function(response) {
+                $('#chat-body').append('<p><span>Вы:</span> ' + message + '</p><p><span>SmartGuide:</span> ' + response.response + '</p>');
+                $('input[name="message"]').val('');
+            },
+            error: function(xhr, status, error) {
+                console.error("Error occurred: " + error);
+            }
+        });
+    });
+});
+</script>
+    
 <style>
 .fix_whats {
     position: fixed;
