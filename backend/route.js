@@ -18,11 +18,11 @@ router.post("/", async (req, res) => {
   res.json({ message: message, response: response });
 });
 
-router.post("/location", (req, res) => {
+router.post("/location", async (req, res) => {
   position = req.body;
 });
 
-router.post("/navigation", (req, res) => {
+router.post("/navigation", async (req, res) => {
   const longitude = req.body.longitude;
   const latitude = req.body.latitude;
   res.redirect(
