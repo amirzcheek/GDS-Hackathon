@@ -1,5 +1,4 @@
 const configs = require("./config.js");
-const fs = require("fs");
 
 async function queryChatGPT(promptText) {
   const apiKey = configs.chatGPT.apiKey;
@@ -9,7 +8,6 @@ async function queryChatGPT(promptText) {
 
   try {
     const information = await fs.readFile("./backend/info.txt", "utf8");
-
     const response = await fetch(endpoint, {
       method: "POST",
       headers: {

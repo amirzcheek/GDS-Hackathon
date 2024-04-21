@@ -17,4 +17,9 @@ router.post("/", async (req, res) => {
   res.json({ message: message, response: response });
 });
 
+router.post('/location', (req, res) => {
+  console.log(req.body); // { latitude: ..., longitude: ... }
+  res.json({ status: 'Location data received successfully' });
+});
+
 module.exports = router;

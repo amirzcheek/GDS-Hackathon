@@ -2071,6 +2071,36 @@ $(document).ready(function() {
         }
     }
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(sendPositionToServer);
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  function sendPositionToServer(position) {
+    fetch('/location', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+  }
+
+  getLocation();
+});
+
+</script>
 </body>
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 </html>
