@@ -1641,8 +1641,14 @@
             <button type="submit" name="button4" class="popup-button">Театр «Астана Опера»</button>
             <div class="distance-text" id="distance-text"></div>
         </form>
-        
-    </div>
+        <% attractionsData.forEach(function(attr) { %>
+            <form id="popup-form" action="/navigation" method="post">
+                <input type="hidden" name="latitude" value=<%= attr.lat %>>
+                <input type="hidden" name="longitude" value=<%= attr.lon %>>
+                <button type="submit" name="button2" class="popup-button"><%= attr.name %></button>
+            </form>
+        <% }); %>
+        </div>
 
    </div>
     <div class="sectipon sectipon-partners">
