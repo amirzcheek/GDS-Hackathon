@@ -444,7 +444,21 @@
         .popup-button i { 
         margin-right: 10px; 
         }
+        .filter-container {
+            margin: 10px 0;
+            font-weight: bold;
+            }
 
+        .filter-container label {
+            margin-right: 10px;
+            }
+
+        .filter-container select {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
       </style><link rel="stylesheet" type="text/css" href="https://static.ticketon.kz/widget/consumer.css"><style class="darkreader darkreader--override" media="screen"></style></head>
 <body class="home-page" monica-version="5.0.4" monica-id="fhimbbbmdjiifimnepkibjfjbppnjble" data-new-gr-c-s-check-loaded="14.1064.0" data-gr-ext-installed="">
 
@@ -1594,25 +1608,38 @@
             Выберите точку
         <button class="close-button" onclick="toggleChatNav()">X</button>
         </div>
+        <div class="filter-container">
+            <label for="filter">Фильтр:</label>
+            <select id="filter" name="filter">
+                <option value="all">Нет</option> 
+                <option value="attraction">По Расстоянию</option>
+            </select>
+        </div>
         <form id="popup-form" action="/navigation" method="post">
             <input type="hidden" name="latitude" value="51.129043">
             <input type="hidden" name="longitude" value="71.431334">
             <button type="submit" name="button1" class="popup-button">Байтерек</button>
+            <div class="distance-text" id="distance-text"></div>
         </form>
         <form id="popup-form" action="/navigation" method="post">
             <input type="hidden" name="latitude" value="51.148035">
             <input type="hidden" name="longitude" value="71.416064">
             <button type="submit" name="button2" class="popup-button">Океанариум «Ailand»</button>
+            <div class="distance-text" id="distance-text"></div>
+            
+            
         </form>
         <form id="popup-form" action="/navigation" method="post">
             <input type="hidden" name="latitude" value="51.089312">
             <input type="hidden" name="longitude" value="71.41592">
             <button type="submit" name="button3" class="popup-button">Музей «Нур-Алем»</button>
+            <div class="distance-text" id="distance-text"></div>
         </form>
         <form id="popup-form" action="/navigation" method="post">
             <input type="hidden" name="latitude" value="51.134915">
             <input type="hidden" name="longitude" value="71.41043">
             <button type="submit" name="button4" class="popup-button">Театр «Астана Опера»</button>
+            <div class="distance-text" id="distance-text"></div>
         </form>
         
     </div>

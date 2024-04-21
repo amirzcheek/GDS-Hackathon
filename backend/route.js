@@ -30,4 +30,5 @@ router.post("/navigation", async (req, res) => {
   );
 });
 
+
 module.exports = router;
